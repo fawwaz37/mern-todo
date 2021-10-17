@@ -1,0 +1,18 @@
+<div class="container">
+  <ul class="collection with-header">
+    <% if (items.length !== 0) { %>
+      <% items.forEach((items) => { %>
+
+        <li class="collection-item">
+          <div><a href="/item/<%= items._id %>"><%= items.name %> <%= items.price %></a>
+            <div class="secondary-content"><a href="/item/<%= items._id %>/delete"><i class="material-icons">delete</i></a>
+            <i class="material-icons">edit</i>
+            </div>
+        </div></li>
+      <% }) %> 
+    <% } else { %>
+      <li class="collection-item"><div>There is No Item<a href="#!" class="secondary-content"></a></div></li>
+    <% } %> 
+  
+</ul>    
+</div>
