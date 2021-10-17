@@ -6,9 +6,22 @@
         <li class="collection-item">
           <div><a href="/item/<%= items._id %>"><%= items.name %> <%= items.price %></a>
             <div class="secondary-content"><a href="/item/<%= items._id %>/delete"><i class="material-icons">delete</i></a>
-            <i class="material-icons">edit</i>
             </div>
-        </div></li>
+            <div class="secondary-content"><a class="modal-trigger" href="#edit"><i class="material-icons">edit</i></a>
+            </div>
+          </div>
+        </li>
+        <!-- Modal Structure -->
+        <div id="edit" class="modal">
+          <div class="modal-content">
+            <h4>EDIT FORM</h4>
+            <form action="/item/<%= items._id %>/update" method="post">
+              <input type="text" name="name" placeholder="Name">
+              <input type="number" name="price" placeholder="Price">
+              <button class="btn">Update</button>
+            </form>
+          </div>
+        </div>
       <% }) %> 
     <% } else { %>
       <li class="collection-item"><div>There is No Item<a href="#!" class="secondary-content"></a></div></li>
@@ -16,3 +29,21 @@
   
 </ul>    
 </div>
+  <!-- Modal Structure -->
+  <!-- <div id="edit" class="modal">
+    <div class="modal-content">
+      <h4>EDIT FORM</h4>
+      <form action="/item/<%= items._id %>/update" method="post">
+        <input type="text" name="name" placeholder="Name">
+        <input type="number" name="price" placeholder="Price">
+        <button class="btn">Update</button>
+      </form>
+    </div>
+  </div> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.modal');
+      var instances = M.Modal.init(elems);
+    });
+  </script>

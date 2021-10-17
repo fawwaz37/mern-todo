@@ -32,6 +32,14 @@ app.get('/item/:id/delete', (req, res) => {
     })
 })
 
+app.post('/item/:id/update', (req, res) => {
+    let { id } = req.params;
+    let { name, price } = req.body;
+    Item.findByIdAndUpdate(id, { name, price }).then(() => {
+        res.redirect('/')
+    })
+})
+
 app.get('/item/:id', (req, res) => {
     let { id } = req.params
     Item.findById(id).then(result => {
