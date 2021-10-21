@@ -4,7 +4,7 @@ const expressLayout = require('express-ejs-layouts');
 const { connectMongoDb } = require('./db/connect');
 const { Item } = require('./db/model');
 
-const port = 3000
+const port = 3000;
 
 app.set('view engine', 'ejs');
 app.use(expressLayout);
