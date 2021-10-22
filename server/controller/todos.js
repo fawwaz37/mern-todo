@@ -11,9 +11,9 @@ export const readTodos = async(req, res) => {
 
 export const createTodos = async(req, res) => {
     try {
-        const { title } = req.body;
-        const todo = await Todo.create({ title });
-        res.status(200).send(`Sukses Create ${req.body}`)
+        const { title, content } = req.body;
+        const todo = await Todo.create({ title, content });
+        res.status(200).send(`Sukses Create ${title} and ${content}`)
     } catch (error) {
         res.status(500).send({ message: error.message });
     }

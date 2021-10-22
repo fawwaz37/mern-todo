@@ -5,7 +5,10 @@ const Todos = new mongoose.Schema({
         type: String,
         required: true
     },
-    content: String
+    content: {
+        type: String,
+        required: true
+    }
 }, { timestamps: true })
 ;
 const Todo = mongoose.model('todo', Todos);
