@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Preloader from "./components/Preloader";
-import { getTodos, postTodos, updateTodos } from "./functions";
+import { getTodos, postTodos, updateTodos, deleteTodos } from "./functions";
 
 function App() {
 
@@ -49,6 +49,13 @@ function App() {
     }
   }
 
+  const removeTodo = async(id) => {
+    await deleteTodos(id);
+    const todosCopy = [...todos];
+    todosCopy.filter(x => x._id !== id);
+    setTodos(todosCopy)
+  }
+
   return (
     <div className="container">
       <div className="row">
@@ -77,7 +84,9 @@ function App() {
           <ul className="collection">
             {todos.map((todo) => (
               <li key={todo._id} onClick={() => setCurrentId(todo._id)}
-              className="collection-item"><div><h5>{todo.title}</h5><p>{todo.content}<a href="#!" className="secondary-content"><i className="material-icons">delete</i></a></p></div></li>
+              className="collection-item"><div><h5>{todo.title}</h5><p>{todo.content}
+              <a href="#!" onClick={() => removeTodo(todo._id)} className="secondary-content">
+                <i className="material-icons">delete</i></a></p></div></li>
 
             ))}
           </ul> : <div><h5>NOTHING TODO</h5></div>

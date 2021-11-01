@@ -30,3 +30,12 @@ export const updateTodo = async(req, res) => {
     await Todo.findByIdAndUpdate(id, todo, {new: true})
     res.json(todo);
 }
+
+export const deleteTodo = async(req, res) => {
+    const { id } = req.params
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).send(`Id ${id} is not Valid`)
+    }
+    await Todo.findByIdAndRemove(id);
+    res.json({message: 'Sukses Delete'});
+}
