@@ -1,4 +1,5 @@
 import Todo from "../db/model.js"
+import mongoose from "mongoose"
 
 export const readTodos = async(req, res) => {
     try {
@@ -17,4 +18,15 @@ export const createTodos = async(req, res) => {
     } catch (error) {
         res.status(500).send({ message: error.message });
     }
+}
+
+export const updateTodo = async(req, res) => {
+    const { id } = req.params
+    const { title, content } = req.body
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).send(`Id ${id} is not Valid`)
+    }
+    const todo = {title, content, _id: id};
+    await Todo.findByIdAndUpdate(id, todo, {new: true})
+    res.json(todo);
 }
