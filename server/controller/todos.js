@@ -14,7 +14,7 @@ export const createTodos = async(req, res) => {
     try {
         const { title, content } = req.body;
         const todo = await Todo.create({ title, content });
-        res.status(200).send(`Sukses Create ${title} and ${content}`)
+        res.status(200).send(`Create ${title} and ${content}`)
     } catch (error) {
         res.status(500).send({ message: error.message });
     }
@@ -37,5 +37,5 @@ export const deleteTodo = async(req, res) => {
         return res.status(404).send(`Id ${id} is not Valid`)
     }
     await Todo.findByIdAndRemove(id);
-    res.json({message: 'Sukses Delete'});
+    res.json({message: 'Done Delete'});
 }
