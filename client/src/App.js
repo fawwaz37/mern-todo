@@ -62,6 +62,7 @@ function App() {
         {/* <pre>{JSON.stringify(todo)}</pre> */}
         <h2>MERN-TODO</h2>
         <p># Fill in the title and content box then press submit to add to your list</p>
+        <p># Type esc on the keyboard to delete all the letters in the title and content boxes</p>
         <form className="col s12" onSubmit={onSubmitHandler}>
           <div className="row">
             <div className="input-field col s6">
