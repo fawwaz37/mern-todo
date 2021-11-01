@@ -12,7 +12,7 @@ Requirements
 ## Cloning this repo
 ```cmd
 > git clone https://github.com/fawwaz37/mern-todo.git
-> cd nodejs-restapi
+> cd mern-todo
 ```
 Use `code .` to open file in VS Code
 ```cmd
