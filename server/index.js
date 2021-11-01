@@ -8,8 +8,6 @@ const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 5050
 
-const dbURI = 'mongodb+srv://zekais:pass12345@cluster0.4jypx.mongodb.net/dbTodo?retryWrites=true&w=majority'
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
@@ -20,6 +18,6 @@ app.get('/', (req, res) => {
 
 app.use('/todo', todosRouter)
 
-mongoose.connect(dbURI)
+mongoose.connect(process.env.mongoDB)
 .then(() => app.listen(PORT, () => console.log(`App Listen in Port: ${PORT}`)))
 .catch((err) => console.log(err))
